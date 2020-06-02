@@ -1,5 +1,6 @@
 package com.erickson.habittrainer
 
+import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.reflect.KClass
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,9 +33,13 @@ class MainActivity : AppCompatActivity() {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
+        if(item.itemId == R.id.action_settings){
+            switch(CreateHabitActivity::class.java)
         }
+        return true
+    }
+
+    private fun switch(activity: Class<*>){
+        startActivity(Intent(this, activity))
     }
 }

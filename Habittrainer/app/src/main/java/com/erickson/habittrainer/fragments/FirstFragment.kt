@@ -1,14 +1,15 @@
-package com.erickson.habittrainer
+package com.erickson.habittrainer.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.erickson.habittrainer.R
+import com.erickson.habittrainer.adapter.HabitAdapter
+import com.erickson.habittrainer.data.getSampleHabit
 import kotlinx.android.synthetic.main.fragment_first.*
 
 /**
@@ -32,7 +33,8 @@ class FirstFragment : Fragment() {
         // Addapter defines data
         recycler_view.setHasFixedSize(true)
         recycler_view.layoutManager = LinearLayoutManager(view.context)
-        recycler_view.adapter = HabitAdapter(getSampleHabit())
+        recycler_view.adapter =
+            HabitAdapter(getSampleHabit())
 
 
 //        view.findViewById<Button>(R.id.button_first).setOnClickListener {

@@ -9,6 +9,8 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.view.View
+import com.erickson.habittrainer.data.Habit
+import com.erickson.habittrainer.db.habitdbtable
 import kotlinx.android.synthetic.main.activity_create_habit.*
 import kotlinx.android.synthetic.main.activity_create_habit.view.*
 import java.io.IOException
@@ -70,6 +72,20 @@ class CreateHabitActivity : AppCompatActivity() {
             displayErrorMessage("Missing image")
             return
         }
+
+        val title = view.title.text.toString()
+        val desc = view.description.text.toString()
+        val habit = Habit(title, desc, imageBitmap!!)
+
+        val id = habitdbtable(this).store(habit)
+
+        if(id == -1L){
+            displayErrorMessage("Habit not stored")
+        }
+        else{
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+
         error_text.visibility = View.GONE
     }
 

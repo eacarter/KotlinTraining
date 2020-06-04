@@ -27,7 +27,7 @@ class HabitAdapter(val habits: List<Habit>): RecyclerView.Adapter<HabitAdapter.H
         if(holder != null){
             holder.v1.text1.text = habits[position].title
             holder.v1.text2.text = habits[position].descrip
-            holder.v1.image.setImageResource(habits[position].image)
+            holder.v1.image.setImageBitmap(habits[position].image)
         }
     }
 }

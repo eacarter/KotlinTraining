@@ -9,7 +9,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.erickson.habittrainer.R
 import com.erickson.habittrainer.adapter.HabitAdapter
-import com.erickson.habittrainer.data.getSampleHabit
+import com.erickson.habittrainer.db.habitdbtable
+//import com.erickson.habittrainer.data.getSampleHabit
 import kotlinx.android.synthetic.main.fragment_first.*
 
 /**
@@ -33,8 +34,8 @@ class FirstFragment : Fragment() {
         // Addapter defines data
         recycler_view.setHasFixedSize(true)
         recycler_view.layoutManager = LinearLayoutManager(view.context)
-        recycler_view.adapter =
-            HabitAdapter(getSampleHabit())
+        recycler_view.adapter = HabitAdapter(habitdbtable(view.context).readAll())
+//            HabitAdapter(getSampleHabit())
 
 
 //        view.findViewById<Button>(R.id.button_first).setOnClickListener {
